@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
+  MatCardModule,
   MatIconModule,
   MatListModule,
   MatPaginatorModule,
@@ -19,6 +20,7 @@ import {GatorComponent} from './gator/gator.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {FightstoreService} from './services/fightstore.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import {FightstoreService} from './services/fightstore.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
     LayoutModule,
     MatButtonModule,
+    MatCardModule,
     MatIconModule,
     MatListModule,
     MatPaginatorModule,

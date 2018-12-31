@@ -20,7 +20,7 @@ describe('FightstoreService', () => {
   });
 
   it('fetches fight data', async(() => {
-    const expectedRoute = 'fightstore.apps.internal/api/fights';
+    const expectedRoute = '/api/fights';
 
     const fight1Data = {
       _id: '5c29cdd760d894000d54e678',
@@ -41,6 +41,7 @@ describe('FightstoreService', () => {
     };
     const expectedFights = [new Fight(fight1Data), new Fight(fight2Data)];
 
+    expect.assertions(3);
     service.fetchData()
       .pipe(toArray())
       .subscribe(data => {

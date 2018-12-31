@@ -1,8 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
@@ -16,15 +16,28 @@
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>fightui</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div id="fight-tainer">
-      <app-tabby></app-tabby>
+      <div *ngIf="!!datarray?.length">
+        <ul>
+          <li *ngFor="let d of datarray">
+            <p>Event name: {{d.eventName}}</p>
+            <p>Event date: {{d.eventDate | date:'EEEE, LLLL dd, h:mm z'}}</p>
+            <p>Event org: {{d.eventOrg}}</p>
+          </li>
+        </ul>
+      </div>
+      <!--<div *ngFor="let d of datarray;" style="margin:20px">-->
+      <!--<p>{{d}}</p>-->
+      <!--<p *ngFor="let ddd of d;">{{ddd.eventName}}</p>-->
+      <!--<p>{{d.eventName}}</p>-->
+      <!--</div>-->
+      <!--<app-tabby [fightData]="data"></app-tabby>-->
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

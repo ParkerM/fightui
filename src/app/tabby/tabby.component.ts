@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { TabbyDataSource } from './tabby-datasource';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort} from '@angular/material';
+import {FightDataSource} from './fight-data-source';
+import {Fight} from '../services/fight.model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-tabby',
@@ -8,14 +10,17 @@ import { TabbyDataSource } from './tabby-datasource';
   styleUrls: ['./tabby.component.styl'],
 })
 export class TabbyComponent implements OnInit {
+
+  @Input() fightData: Observable<Fight>;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: TabbyDataSource;
+  dataSource: FightDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['eventDate', 'eventName'];
 
   ngOnInit() {
-    this.dataSource = new TabbyDataSource(this.paginator, this.sort);
+    this.dataSource = new FightDataSource(this.paginator, this.sort);
   }
 }
