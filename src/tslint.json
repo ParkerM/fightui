@@ -1,7 +1,14 @@
 {
     "extends": "../tslint.json",
     "rules": {
-        "directive-selector": [
+      "quotemark": {
+        "options": [
+          "single",
+          "avoid-escape",
+          "avoid-template"
+        ]
+      },
+      "directive-selector": [
             true,
             "attribute",
             "app",
