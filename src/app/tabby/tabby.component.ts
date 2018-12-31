@@ -30,4 +30,9 @@ export class TabbyComponent implements AfterViewInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+
+  getTimezone(): string {
+    const dateStr = new Intl.DateTimeFormat([], {timeZoneName: 'short'}).format(new Date());
+    return dateStr.replace(/.*\s(.*)$/, '$1');
+  }
 }

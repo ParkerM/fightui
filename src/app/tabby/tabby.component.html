@@ -2,8 +2,12 @@
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Fights">
     <!-- Id Column -->
     <ng-container matColumnDef="eventDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="align-right">Date</th>
-      <td mat-cell *matCellDef="let row" class="align-right">{{row.eventDate | date:'EEEE, LLLL dd, h:mm z'}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-date-header" [arrowPosition]="'after'">
+        <span class="table-header-left">Date</span>
+        <span class="table-header-spacer"></span>
+        <span class="table-header-right"><sub>({{getTimezone()}})</sub></span>
+      </th>
+      <td mat-cell *matCellDef="let row" class="align-right">{{row.eventDate | date:'MMM dd, y, hh:mm a'}}</td>
     </ng-container>
 
     <!-- Name Column -->

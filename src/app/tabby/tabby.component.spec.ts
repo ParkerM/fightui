@@ -51,21 +51,21 @@ describe('TabbyComponent', () => {
     const rows: HTMLCollectionOf<HTMLTableRowElement> = table.tBodies.item(0).rows;
 
     expect(rows).toHaveLength(1);
-    expect(Date.parse(rows.item(0).cells.item(0).textContent)).toEqual(Date.parse('Friday, January 02, 10:17 GMT+0'));
+    expect(Date.parse(rows.item(0).cells.item(0).textContent)).toEqual(Date.parse('Friday, January 02 1970, 10:17 GMT+0'));
     expect(rows.item(0).textContent).toContain('King fight');
 
     mockFightDataSubject.next(fights[1]);
     fixture.detectChanges();
 
     expect(rows).toHaveLength(2);
-    expect(Date.parse(rows.item(1).cells.item(0).textContent)).toEqual(Date.parse('Monday, January 26, 2:24 GMT-6'));
+    expect(Date.parse(rows.item(1).cells.item(0).textContent)).toEqual(Date.parse('Monday, January 26 1970, 14:24 GMT-6'));
     expect(rows.item(1).textContent).toContain('MooFC');
 
     mockFightDataSubject.next(fights[2]);
     fixture.detectChanges();
 
     expect(rows).toHaveLength(3);
-    expect(Date.parse(rows.item(2).cells.item(0).textContent)).toEqual(Date.parse('Thursday, January 01, 5:59 GMT-6'));
+    expect(Date.parse(rows.item(2).cells.item(0).textContent)).toEqual(Date.parse('Thursday, January 01 1970, 5:59 GMT-6'));
     expect(rows.item(2).textContent).toContain('The Guild of Iron Chefs');
   }));
 });
