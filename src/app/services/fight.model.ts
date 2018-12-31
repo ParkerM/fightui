@@ -1,13 +1,16 @@
 export class Fight {
-  public eventDate: string;
-  public eventOrg: string;
-  public eventName: string;
-  public eventBout: string;
-  public eventBilling: string;
-  public geoCountry: string;
-  public geoRegion: string;
-  public geoVenue: string;
-  public geoVenueLocation: string;
+  _id: string;
+  _timestamp: number;
+  eventBilling: string;
+  eventBout: string;
+  eventDate: number;
+  eventName: string;
+  eventOrg: string;
+  eventUrlPath: string;
+  geoCountry: string;
+  geoRegion: string;
+  geoVenue: string;
+  geoVenueLocation: string;
 
   public constructor(init?: Partial<Fight>) {
     Object.assign(this, init);
