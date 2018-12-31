@@ -1,1 +1,25 @@
-<app-gator></app-gator>
+<div id="main-wrapper">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>How long 'til the fight?</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h2>What doin?</h2>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="wrapper-header">
+        <h2>Upcoming events</h2>
+      </div>
+      <div id="table-container">
+        <app-tabby [fightData]="dataSubject"></app-tabby>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
