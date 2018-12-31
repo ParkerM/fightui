@@ -23,21 +23,21 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div id="fight-tainer">
-      <div *ngIf="!!datarray?.length">
-        <ul>
-          <li *ngFor="let d of datarray">
-            <p>Event name: {{d.eventName}}</p>
-            <p>Event date: {{d.eventDate | date:'EEEE, LLLL dd, h:mm z'}}</p>
-            <p>Event org: {{d.eventOrg}}</p>
-          </li>
-        </ul>
-      </div>
+      <!--<div *ngIf="!!datarray?.length">-->
+        <!--<ul>-->
+          <!--<li *ngFor="let d of datarray">-->
+            <!--<p>Event name: {{d.eventName}}</p>-->
+            <!--<p>Event date: {{d.eventDate | date:'EEEE, LLLL dd, h:mm z'}}</p>-->
+            <!--<p>Event org: {{d.eventOrg}}</p>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
       <!--<div *ngFor="let d of datarray;" style="margin:20px">-->
       <!--<p>{{d}}</p>-->
       <!--<p *ngFor="let ddd of d;">{{ddd.eventName}}</p>-->
       <!--<p>{{d.eventName}}</p>-->
       <!--</div>-->
-      <!--<app-tabby [fightData]="data"></app-tabby>-->
+      <app-tabby [fightData]="dataSubject"></app-tabby>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,10 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
 import {GatorComponent} from './gator/gator.component';
 import {TabbyComponent} from './tabby/tabby.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {FightstoreService} from './services/fightstore.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,6 +20,13 @@ describe('AppComponent', () => {
         MatSortModule,
         MatTableModule,
         NoopAnimationsModule,
+      ],
+      providers: [
+        {
+          provide: FightstoreService, useValue: {
+            fetchFights: jest.fn()
+          }
+        }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

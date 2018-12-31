@@ -10,13 +10,19 @@
         <!-- Id Column -->
         <ng-container matColumnDef="eventDate">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-          <td mat-cell *matCellDef="let row">{{row.eventDate | date:'long'}}</td>
+          <td mat-cell *matCellDef="let row">{{row.eventDate | date:'EEEE, LLLL dd, h:mm z'}}</td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="eventName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Fight</th>
           <td mat-cell *matCellDef="let row">{{row.eventName}}</td>
+        </ng-container>
+
+        <!-- Org Column -->
+        <ng-container matColumnDef="eventOrg">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Org</th>
+          <td mat-cell *matCellDef="let row">{{row.eventOrg}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -26,7 +32,7 @@
 
     <mat-card-actions>
       <mat-paginator #paginator
-                     [length]="dataSource.fightData?.length"
+                     [length]="dataSource.data.length"
                      [pageIndex]="0"
                      [pageSize]="50"
                      [pageSizeOptions]="[25, 50, 100, 250]">

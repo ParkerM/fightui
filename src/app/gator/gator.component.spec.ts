@@ -3,6 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
+  MatCardModule,
   MatIconModule,
   MatListModule,
   MatPaginatorModule,
@@ -14,7 +15,6 @@ import {
 
 import {GatorComponent} from './gator.component';
 import {TabbyComponent} from '../tabby/tabby.component';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FightstoreService} from '../services/fightstore.service';
 import {Subject} from 'rxjs';
 import {Fight} from '../services/fight.model';
@@ -42,6 +42,7 @@ describe('GatorComponent', () => {
       imports: [
         LayoutModule,
         MatButtonModule,
+        MatCardModule,
         MatIconModule,
         MatListModule,
         MatPaginatorModule,
@@ -55,7 +56,7 @@ describe('GatorComponent', () => {
         {provide: FightstoreService, useValue: mockFightstoreService},
       ],
       schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
+        // CUSTOM_ELEMENTS_SCHEMA,
       ],
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(GatorComponent);

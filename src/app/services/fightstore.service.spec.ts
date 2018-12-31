@@ -4,7 +4,6 @@ import {FightstoreService} from './fightstore.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Fight} from './fight.model';
 import {toArray} from 'rxjs/operators';
-import {HttpResponse} from '@angular/common/http';
 
 describe('FightstoreService', () => {
   let service: FightstoreService;
@@ -52,8 +51,7 @@ describe('FightstoreService', () => {
     const fightReq = httpMock.expectOne(expectedRoute);
     expect(fightReq.request.method).toBe('GET');
 
-    fightReq.event(new HttpResponse({body: fight1Data}));
-    fightReq.flush(fight2Data);
+    fightReq.flush([fight1Data, fight2Data]);
 
     httpMock.verify();
   }));
