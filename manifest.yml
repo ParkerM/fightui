@@ -1,0 +1,9 @@
+---
+applications:
+- name: fightui
+  buildpacks:
+  - https://github.com/cloudfoundry/nodejs-buildpack
+  command: node server.js
+  memory: 32M
+  instances: 1
+  random-route: true

@@ -1,0 +1,17 @@
+{
+  "name": "fightui",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "author": "Parker Mauney <parkermauney@gmail.com> (parkerm.gitlab.io)",
+  "homepage": "https://gitlab.com/howlongtilthefight/fightui",
+  "repository": "gitlab:howlongtilthefight/fightui",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-serve-static-core": "^0.1.1"
+  },
+  "engines": {
+    "node": ">=10.12.0 <12.0.0",
+    "yarn": "^1.12.3"
+  }
+}
