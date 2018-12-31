@@ -5,7 +5,7 @@
   "projects": {
     "fightui": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -17,14 +17,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fightui",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {"glob": "favicon.ico", "input": "src", "output": "/"},
+              {"glob": "**/*", "input": "src/assets", "output": "/assets"},
+              {"glob": "server.js", "input": "src", "output": "/"},
+              {"glob": "package.json", "input": "src", "output": "/"}
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
@@ -89,8 +91,8 @@
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {"glob": "favicon.ico", "input": "src", "output": "/"},
+              {"glob": "**/*", "input": "src/assets", "output": "/assets"}
             ]
           }
         },

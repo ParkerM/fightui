@@ -1,0 +1,53 @@
+image: node:11
+
+stages:
+- test
+- build
+- deploy
+
+test:
+  stage: test
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+  script:
+  - yarn install
+  - yarn test
+  only:
+  - master
+
+build:
+  stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+    policy: pull
+  script:
+  - yarn install
+  - yarn build:prod
+  - cd dist && yarn install
+  artifacts:
+    paths:
+    - manifest.yml
+    - dist/
+    when: on_success
+  only:
+  - master
+
+deploy_pws:
+  stage: deploy
+  dependencies:
+  - build
+  script:
+  - mv manifest.yml -t dist/ && cd dist
+  - curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+  - ./cf api api.run.pivotal.io
+  - ./cf auth
+  - ./cf target -o $CF_ORG -s $CF_SPACE
+  - ./cf push
+  environment:
+    name: PWS_PROD
+  only:
+  - master
