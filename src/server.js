@@ -1,8 +1,15 @@
 const express = require('express');
+const proxy = require('http-proxy-middleware');
 const http = require('http');
 const path = require('path');
 
 const app = express();
+
+app.use("/api/fights", proxy({
+  target: 'https://fightstore.apps.internal',
+  secure: true,
+  changeOrigin: false,
+}));
 
 app.use(express.static(__dirname));
 

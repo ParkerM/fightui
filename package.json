@@ -51,6 +51,7 @@
     "codelyzer": "^4.5.0",
     "express": "^4.16.4",
     "express-serve-static-core": "^0.1.1",
+    "http-proxy-middleware": "^0.19.1",
     "jest": "^24.0.0-alpha.9",
     "jest-preset-angular": "^7.0.0-alpha.2",
     "jest-sonar-reporter": "^2.0.0",
