@@ -1,54 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashComponent } from './dash/dash.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatSidenavModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatTreeModule } from '@angular/material';
-import { LayoutModule } from '@angular/cdk/layout';
-import { TabbyComponent } from './tabby/tabby.component';
-import { GatorComponent } from './gator/gator.component';
-import { AddressComponent } from './address/address.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TreeComponent } from './tree/tree.component';
-import { DndComponent } from './dnd/dnd.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule,
+} from '@angular/material';
+import {LayoutModule} from '@angular/cdk/layout';
+import {TabbyComponent} from './tabby/tabby.component';
+import {GatorComponent} from './gator/gator.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AppRoutingModule} from './app-routing.module';
+import {FightstoreService} from './services/fightstore.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashComponent,
-    TabbyComponent,
     GatorComponent,
-    AddressComponent,
-    TreeComponent,
-    DndComponent
+    TabbyComponent,
   ],
   imports: [
-    BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
+    BrowserModule,
     LayoutModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatToolbarModule,
-    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
     MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    ReactiveFormsModule,
-    MatTreeModule,
-    DragDropModule,
-    AppRoutingModule
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    FightstoreService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ]
 })
-export class AppModule { }
+export class AppModule {
+}

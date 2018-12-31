@@ -4,12 +4,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatIconModule,
-  MatListModule,
-  MatSidenavModule,
+  MatListModule, MatPaginatorModule,
+  MatSidenavModule, MatSortModule, MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
 
 import { GatorComponent } from './gator.component';
+import {TabbyComponent} from '../tabby/tabby.component';
 
 describe('GatorComponent', () => {
   let component: GatorComponent;
@@ -17,15 +18,18 @@ describe('GatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GatorComponent],
+      declarations: [GatorComponent, TabbyComponent],
       imports: [
-        NoopAnimationsModule,
         LayoutModule,
         MatButtonModule,
         MatIconModule,
         MatListModule,
+        MatPaginatorModule,
         MatSidenavModule,
+        MatSortModule,
+        MatTableModule,
         MatToolbarModule,
+        NoopAnimationsModule,
       ]
     }).compileComponents();
   }));
