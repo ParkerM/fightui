@@ -1,0 +1,7 @@
+{
+  "/api/fights": {
+    "target": "https://fightstore.cfapps.io",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

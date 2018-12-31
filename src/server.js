@@ -15,6 +15,8 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
+// "https://fightstore.apps.internal"
+
 server.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
