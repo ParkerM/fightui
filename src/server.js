@@ -27,3 +27,11 @@ const server = http.createServer(app);
 server.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
+
+
+/*
+Local proxy config:
+  target: 'https://fightstore.cfapps.io',
+  secure: false,
+  changeOrigin: true,
+ */

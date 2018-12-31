@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
   templateUrl: './tabby.component.html',
   styleUrls: ['./tabby.component.styl'],
 })
-// export class TabbyComponent implements OnInit {
 export class TabbyComponent implements AfterViewInit {
 
   private readonly MAX_PAGES = 25;

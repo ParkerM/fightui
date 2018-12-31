@@ -16,7 +16,6 @@ export class FightstoreService {
     return this.http.get<Fight[]>('/api/fights')
       .pipe(
         mergeAll()
-        // map(fight => of(new Fight(fight))),
       );
   }
 }

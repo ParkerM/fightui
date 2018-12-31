@@ -16,16 +16,14 @@ import {
 } from '@angular/material';
 import {LayoutModule} from '@angular/cdk/layout';
 import {TabbyComponent} from './tabby/tabby.component';
-import {GatorComponent} from './gator/gator.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {FightstoreService} from './services/fightstore.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GatorComponent,
     TabbyComponent,
   ],
   imports: [
