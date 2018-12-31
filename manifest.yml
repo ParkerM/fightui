@@ -6,4 +6,3 @@ applications:
   command: node server.js
   memory: 32M
   instances: 1
-  random-route: true

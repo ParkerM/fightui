@@ -6,14 +6,14 @@ const path = require('path');
 const app = express();
 
 app.use("/api/fights", proxy({
-  target: 'https://fightstore.apps.internal',
+  target: 'https://fightstore.cfapps.io',
   secure: true,
-  changeOrigin: false,
+  changeOrigin: true,
 }));
 
 app.use(express.static(__dirname));
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
@@ -21,8 +21,6 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app);
-
-// "https://fightstore.apps.internal"
 
 server.listen(port, () => {
   console.log(`Listening on ${port}`);
@@ -34,4 +32,4 @@ Local proxy config:
   target: 'https://fightstore.cfapps.io',
   secure: false,
   changeOrigin: true,
- */
+*/
