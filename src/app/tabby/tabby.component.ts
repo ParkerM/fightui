@@ -35,4 +35,12 @@ export class TabbyComponent implements AfterViewInit {
     const dateStr = new Intl.DateTimeFormat([], {timeZoneName: 'short'}).format(new Date());
     return dateStr.replace(/.*\s(.*)$/, '$1');
   }
+
+  get nextEvent(): Fight {
+    const nowDate = new Date(Date.now());
+
+    return this.dataSource.data
+      .filter((fight: Fight) => fight.eventDate >= nowDate.valueOf())
+      .sort((a, b) => a.eventDate - b.eventDate)[0];
+  }
 }

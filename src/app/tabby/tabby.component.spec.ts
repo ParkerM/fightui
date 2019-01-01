@@ -68,4 +68,38 @@ describe('TabbyComponent', () => {
     expect(Date.parse(rows.item(2).cells.item(0).textContent)).toEqual(Date.parse('Thursday, January 01 1970, 5:59 GMT-6'));
     expect(rows.item(2).textContent).toContain('The Guild of Iron Chefs');
   }));
+
+  describe('supplies the countdowner', () => {
+    let myDate: Date;
+    let timeyFights: Fight[];
+
+    beforeEach(() => {
+      myDate = new Date(1970, 1, 1, 15, 18, 25);
+      jest.spyOn(Date, 'now').mockImplementation(() => myDate);
+
+      timeyFights = [
+        new Fight({eventDate: 2855105000, eventName: 'Next up fight'}),
+        new Fight({eventDate: 1855105000, eventName: 'Past fight'}),
+        new Fight({eventDate: 3855105000, eventName: 'Future fight'}),
+      ];
+    });
+
+    it('nextEvent returns nearest upcoming event', async(() => {
+      console.log(Date.now());
+      const expectedEvent = timeyFights[0];
+      const priorEvent = timeyFights[1];
+      const distantFutureEvent = timeyFights[2];
+
+      fixture.detectChanges();
+      processEvents(distantFutureEvent, priorEvent, expectedEvent);
+
+      const actualEvent = component.nextEvent;
+      expect(actualEvent).toEqual(expectedEvent);
+    }));
+
+    function processEvents(...events) {
+      events.forEach(event => mockFightDataSubject.next(event));
+      fixture.detectChanges();
+    }
+  });
 });
