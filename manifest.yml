@@ -3,6 +3,6 @@ applications:
 - name: fightui
   buildpacks:
   - https://github.com/cloudfoundry/nodejs-buildpack
-  command: node server/server.js
+  command: node server/main.js
   memory: 32M
   instances: 1

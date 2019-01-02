@@ -5,7 +5,7 @@
   "author": "Parker Mauney <parkermauney@gmail.com> (parkerm.gitlab.io)",
   "homepage": "https://gitlab.com/howlongtilthefight/fightui",
   "repository": "gitlab:howlongtilthefight/fightui",
-  "main": "server.ts",
+  "main": "main.ts",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
