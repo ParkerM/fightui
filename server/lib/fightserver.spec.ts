@@ -1,32 +1,23 @@
 import {FightServer} from './fightserver';
-import express from 'express';
-import {IRouterHandler, IRouterMatcher, Request} from 'express-serve-static-core';
+import * as express from 'express';
+import * as core from 'express-serve-static-core';
 import * as proxy from 'http-proxy-middleware';
-import Mock = jest.Mock;
 
 const mockApp = {
-  use: jest.fn<IRouterHandler<any> & IRouterMatcher<any>>(),
+  use: jest.fn<core.IRouterHandler<any> & core.IRouterMatcher<any>>(),
   get: jest.fn(),
   set: jest.fn(),
   listen: jest.fn(),
 };
 
-jest.mock('express', () => () => mockApp);
-
-
-
-const mockProxy: Mock = jest.fn();
-jest.mock('http-proxy-middleware', () => jest.fn(() => ({
-  proxy: (config: proxy.Config) => mockProxy(config),
-
-  // @ts-ignore
-  proxy: (contextOrUri: string, config: proxy.Config) => mockProxy(config),
-})));
+jest.mock('express', () => jest.fn(() => mockApp));
+jest.spyOn(express, 'static').mockImplementation(console.log);
+jest.mock('http-proxy-middleware', () => jest.fn(() => ({})));
 
 describe('FightServer', () => {
   let server: FightServer;
 
-  it('configures fightstore proxy on init', () => {
+  it('configures routes and proxies on init', () => {
     const expectedConfig: proxy.Config = {
       target: 'https://fightstore.cfapps.io',
       secure: true,
@@ -35,14 +26,7 @@ describe('FightServer', () => {
 
     server = new FightServer();
 
-    // expect(mockApp.use).toHaveBeenCalledWith('/api/fights', mockProxy);
     expect(mockApp.use).toHaveBeenCalledWith('/api/fights', expect.anything());
-    const proxyFn = mockApp.use.mock.calls[0][1];
-
-    const request = {
-      originalUrl: 'localhost/api/howdy'
-    } as Request;
-    // const proxyRes = proxyFn(request);
     expect(proxy).toHaveBeenCalledWith(expectedConfig);
     expect(mockApp.get).toHaveBeenCalledWith('*', expect.anything());
   });
