@@ -1,8 +1,9 @@
-import express from 'express';
 import * as http from 'http';
-import proxy from 'http-proxy-middleware';
+import express from 'express';
 import {Application, Request, Response} from 'express-serve-static-core';
+import proxy from 'http-proxy-middleware';
 import path from 'path';
+import serveStatic from 'serve-static';
 
 export class FightServer {
   private readonly fightStoreProxy: proxy.Proxy;
@@ -19,8 +20,8 @@ export class FightServer {
   private configureServer() {
     // @ts-ignore
     this.app.use('/api/fights', this.fightStoreProxy);
-    this.app.use(express.static(path.join(__dirname, '../../')));
 
+    this.app.use(serveStatic(path.join(__dirname, '../../')));
     this.app.get('*', (req: Request, res: Response) => res.sendFile('index.html'));
   }
 
