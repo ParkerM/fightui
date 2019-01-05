@@ -1,15 +1,27 @@
 {
-  "name": "fightui",
+  "name": "fightserver",
   "version": "0.0.0",
   "license": "Apache-2.0",
   "author": "Parker Mauney <parkermauney@gmail.com> (parkerm.gitlab.io)",
   "homepage": "https://gitlab.com/howlongtilthefight/fightui",
   "repository": "gitlab:howlongtilthefight/fightui",
+  "main": "main.ts",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-serve-static-core": "^0.1.1",
     "http-proxy-middleware": "^0.19.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "@types/express-serve-static-core": "^4.16.0",
+    "@types/http-proxy-middleware": "^0.19.1",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.18",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   },
   "engines": {
     "node": ">=10.12.0 <12.0.0",
