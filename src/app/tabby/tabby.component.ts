@@ -32,7 +32,10 @@ export class TabbyComponent implements AfterViewInit {
   }
 
   getTimezone(): string {
-    const dateStr = new Intl.DateTimeFormat([], {timeZoneName: 'short'}).format(new Date());
+    const dtf: Intl.DateTimeFormatOptions = Intl.DateTimeFormat().resolvedOptions();
+    dtf.timeZoneName = 'short';
+
+    const dateStr = Intl.DateTimeFormat([], dtf).format(new Date(Date.now()));
     return dateStr.replace(/.*\s(.*)$/, '$1');
   }
 

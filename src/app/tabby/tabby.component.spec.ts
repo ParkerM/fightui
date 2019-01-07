@@ -29,7 +29,7 @@ describe('TabbyComponent', () => {
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
-      ]
+      ],
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(TabbyComponent);
       el = fixture.nativeElement;
@@ -42,6 +42,7 @@ describe('TabbyComponent', () => {
     mockFightDataSubject.complete();
   });
 
+  // TODO: it('should display and sort emitted fights by descending event date', async(() => {
   it('should display emitted fights', async(() => {
     fixture.detectChanges();
     mockFightDataSubject.next(fights[0]);
@@ -69,7 +70,53 @@ describe('TabbyComponent', () => {
     expect(rows.item(2).textContent).toContain('The Guild of Iron Chefs');
   }));
 
-  describe('supplies the countdowner', () => {
+  describe('should display local timezone abbr in date header', () => {
+    const dstDate = new Date(2019, 4, 1, 1, 15, 30);
+    const stdDate = new Date(2019, 0, 1, 1, 15, 30);
+
+    let _intlDtf;
+    let mockResolvedOptions;
+
+    beforeEach(() => {
+      _intlDtf = Intl.DateTimeFormat;
+
+      mockResolvedOptions = Intl.DateTimeFormat().resolvedOptions();
+      Intl.DateTimeFormat.prototype.resolvedOptions = () => mockResolvedOptions;
+    });
+
+    afterEach(() => {
+      Intl.DateTimeFormat = _intlDtf;
+    });
+
+    describe.each(getTzAbbrMap())('during %s', (dstAdj, localDate, localTzName, expectedTzAbbr) => {
+      it(`${localTzName} displays ${expectedTzAbbr}`, () => {
+        jest.spyOn(Date, 'now').mockReturnValue(localDate);
+        mockResolvedOptions.timeZone = localTzName;
+
+        fixture.detectChanges();
+        const table: HTMLTableElement = el.querySelector('table');
+        const headerCells: HTMLCollectionOf<HTMLTableHeaderCellElement> = table.tHead.rows.item(0).cells;
+
+        expect(headerCells.namedItem('table-date-header').textContent).toContain(expectedTzAbbr);
+      });
+    });
+
+    function getTzAbbrMap(): [string, Date, string, string][] {
+      const getDstAndStdTuple = (tzName, tzDstAbbr, tzStdAbbr): [string, Date, string, string][] =>
+        [['daylight savings time', dstDate, tzName, tzDstAbbr], ['standard time', stdDate, tzName, tzStdAbbr]];
+
+      return [].concat(
+        getDstAndStdTuple('America/New_York', 'EDT', 'EST'),
+        getDstAndStdTuple('America/Chicago', 'CDT', 'CST'),
+        getDstAndStdTuple('America/Los_Angeles', 'PDT', 'PST'),
+        getDstAndStdTuple('America/Phoenix', 'MST', 'MST'),
+        getDstAndStdTuple('Asia/Hong_Kong', 'GMT+8', 'GMT+8'),
+        getDstAndStdTuple('Europe/Brussels', 'GMT+2', 'GMT+1'),
+      );
+    }
+  });
+
+  describe('should produce data for the countdowner', () => {
     let myDate: Date;
     let timeyFights: Fight[];
 

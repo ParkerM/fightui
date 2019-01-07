@@ -2,7 +2,7 @@
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Fights">
     <!-- Id Column -->
     <ng-container matColumnDef="eventDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-date-header" [arrowPosition]="'after'">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="table-date-header" [arrowPosition]="'after'">
         <span class="table-header-left">Date</span>
         <span class="table-header-spacer"></span>
         <span class="table-header-right"><sub>({{getTimezone()}})</sub></span>
