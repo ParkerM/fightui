@@ -8,8 +8,7 @@ import {FightstoreService} from './services/fightstore.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
-export class AppComponent implements AfterViewInit{
-  title = 'fightui';
+export class AppComponent implements AfterViewInit {
 
   datarray: Fight[] = [];
   dataSubject: Subject<Fight>;

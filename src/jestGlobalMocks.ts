@@ -8,6 +8,7 @@ import 'hammerjs';
 
 const createStorageMock = () => {
   let storage = {};
+  // noinspection JSUnusedGlobalSymbols
   return {
     getItem: key => key in storage ? storage[key] : null,
     setItem: (key, value) => storage[key] = value || '',
