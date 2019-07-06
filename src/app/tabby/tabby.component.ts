@@ -16,7 +16,7 @@ export class TabbyComponent implements AfterViewInit {
   displayedColumns = ['eventDate', 'eventName', 'eventOrg'];
   dataSource: MatTableDataSource<Fight>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   constructor() {
     this.dataSource = new MatTableDataSource<Fight>();

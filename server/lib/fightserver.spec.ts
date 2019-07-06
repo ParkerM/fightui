@@ -6,7 +6,7 @@ import * as serveStatic from 'serve-static';
 import path from 'path';
 
 const mockApp = {
-  use: jest.fn<core.IRouterHandler<any> & core.IRouterMatcher<any>>(),
+  use: jest.fn<core.IRouterHandler<any> & core.IRouterMatcher<any>, any[]>(),
   get: jest.fn(),
   set: jest.fn(),
   listen: jest.fn(),
@@ -50,9 +50,9 @@ describe('FightServer', () => {
 
       const expectedPort = '47474';
       const cbFn = jest.fn();
-      server.start(expectedPort, cbFn);
+      server.start(expectedPort, cbFn.mockImplementation);
 
-      expect(mockApp.listen).toHaveBeenCalledWith(expectedPort, cbFn);
+      expect(mockApp.listen).toHaveBeenCalledWith(expectedPort, cbFn.mockImplementation);
     });
   });
 });

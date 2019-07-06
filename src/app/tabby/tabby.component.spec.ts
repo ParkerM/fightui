@@ -71,8 +71,8 @@ describe('TabbyComponent', () => {
   }));
 
   describe('should display local timezone abbr in date header', () => {
-    const dstDate = new Date(2019, 4, 1, 1, 15, 30);
-    const stdDate = new Date(2019, 0, 1, 1, 15, 30);
+    const dstDate: Date = new Date(2019, 4, 1, 1, 15, 30);
+    const stdDate: Date = new Date(2019, 0, 1, 1, 15, 30);
 
     let _intlDtf;
     let mockResolvedOptions;
@@ -90,7 +90,7 @@ describe('TabbyComponent', () => {
 
     describe.each(getTzAbbrMap())('during %s', (dstAdj, localDate, localTzName, expectedTzAbbr) => {
       it(`${localTzName} displays ${expectedTzAbbr}`, () => {
-        jest.spyOn(Date, 'now').mockReturnValue(localDate);
+        jest.spyOn(Date, 'now').mockImplementation(() => localDate.valueOf());
         mockResolvedOptions.timeZone = localTzName;
 
         fixture.detectChanges();
@@ -122,7 +122,7 @@ describe('TabbyComponent', () => {
 
     beforeEach(() => {
       myDate = new Date(1970, 1, 1, 15, 18, 25);
-      jest.spyOn(Date, 'now').mockImplementation(() => myDate);
+      jest.spyOn(Date, 'now').mockImplementation(() => myDate.valueOf());
 
       timeyFights = [
         new Fight({eventDate: 2855105000, eventName: 'Next up fight'}),
