@@ -54,7 +54,7 @@ build:
   only:
   - master
 
-deploy_pws:
+.deploy_pws:
   stage: deploy
   dependencies:
   - build
