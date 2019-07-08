@@ -1,9 +1,29 @@
 image: node:12
 
 stages:
-- test
 - build
+- test
 - deploy
+
+build:
+  stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+    policy: pull
+  script:
+  - yarn install
+  - yarn build-package:prod
+  - cd dist && yarn install --production
+  artifacts:
+    paths:
+    - manifest.yml
+    - Procfile
+    - dist/
+    when: on_success
+  only:
+  - master
 
 jest_test:
   stage: test
@@ -35,22 +55,22 @@ vulerability_scan:
   - master
   allow_failure: true
 
-build:
-  stage: build
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-    - node_modules/
-    policy: pull
+deploy_heroku:
+  stage: deploy
+  dependencies:
+  - build
+  before_script:
+  - git config --global user.name "${GITLAB_USER_NAME}"
+  - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
-  - yarn install
-  - yarn build-package:prod
-  - cd dist && yarn install --production
-  artifacts:
-    paths:
-    - manifest.yml
-    - dist/
-    when: on_success
+  - mv Procfile -t dist/ && cd dist
+  - git init
+  - git add .
+  - git commit -m "Heroku deploy ${CI_COMMIT_SHORT_SHA}"
+  - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/howlongtilthefight.git
+  - git push heroku master -f
+  environment:
+    name: HEROKU_PROD
   only:
   - master
 
