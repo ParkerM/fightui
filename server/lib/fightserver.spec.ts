@@ -27,7 +27,19 @@ describe('FightServer', () => {
 
       expect(pathSpy).toHaveBeenCalledWith(__dirname, '../../');
       expect(serveStatic).toHaveBeenCalledWith(path.join(__dirname, '../../'));
-      expect(mockApp.get).toHaveBeenCalledWith('*', expect.anything());
+      expect(mockApp.get).toHaveBeenCalledWith('*', expect.any(Function));
+    });
+
+    it('serves index.html on GET request', () => {
+      server = new FightServer();
+
+      const getFn: Function = mockApp.get.mock.calls[0][1];
+      const mockSendFile = jest.fn();
+      const mockRes = {
+        sendFile: mockSendFile
+      };
+      getFn({}, mockRes);
+      expect(mockSendFile).toHaveBeenCalledWith('index.html');
     });
 
     it('configures fightstore proxy', () => {
