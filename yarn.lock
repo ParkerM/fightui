@@ -92,7 +92,7 @@
     "@angular-devkit/core" "8.3.21"
     rxjs "6.4.0"
 
-"@angular-devkit/core@8.3.21":
+"@angular-devkit/core@8.3.21", "@angular-devkit/core@^8.2.0":
   version "8.3.21"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-8.3.21.tgz#447022813e46333e930816c287722d06b9c4dd3a"
   integrity sha512-BYyVbrbys535FplX0+GVOlYBg/cyk1U5SRhSxRRFZYi9epVlEBBPk8/6wV4cQPGb6EwXkVj7YtPWXjXcGfzWmA==
@@ -103,7 +103,7 @@
     rxjs "6.4.0"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@8.3.21":
+"@angular-devkit/schematics@8.3.21", "@angular-devkit/schematics@^8.2.0":
   version "8.3.21"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-8.3.21.tgz#80d515f480180be18a4130ea691f90153bcab3ea"
   integrity sha512-+wH0362CRr/SijVX4w2baY2ANZ4scQ1k2xO8lT+NMeZQkw3IJQPOfwk1IaqiAs2xuBJZcSDH1Gn80+Jh4Dit7w==
@@ -1047,6 +1047,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@briebug/jest-schematic@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@briebug/jest-schematic/-/jest-schematic-2.1.1.tgz#1a1bcee388620fdaa7516ccaff96a5cef98e04a3"
+  integrity sha512-AZMjSWvfk8NcCR3LuIKuLSN3zHJYnKmWMoFoLR6WATWfRR+WYNKlDLz/OUEKLu8gqSTY0eH0e2WxE3QEICNDJw==
+  dependencies:
+    "@angular-devkit/core" "^8.2.0"
+    "@angular-devkit/schematics" "^8.2.0"
+    "@schematics/angular" "^8.2.0"
+    rxjs "6.4.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -1267,7 +1277,7 @@
     tree-kill "1.2.1"
     webpack-sources "1.4.3"
 
-"@schematics/angular@8.3.21":
+"@schematics/angular@8.3.21", "@schematics/angular@^8.2.0":
   version "8.3.21"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-8.3.21.tgz#4902e0b6e8be47006859009bf96a026e3d39dd27"
   integrity sha512-KahQ+dHvTsGOZwY6IdzqJZLDEn0G89rrK3OY+7okZujoaLM+LXhxlPoznW1udnZJVTa3VNxYGx11fkgLtRJRqA==
