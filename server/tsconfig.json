@@ -1,0 +1,14 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": false
+  },
+  "typeRoots": [
+    "node_modules/@types"
+  ]
+}

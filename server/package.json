@@ -7,7 +7,8 @@
   "repository": "gitlab:howlongtilthefight/fightui",
   "main": "main.ts",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "test": "jest"
   },
   "engines": {
     "node": ">=11.x <=13.x",
@@ -27,9 +28,23 @@
     "@types/http-proxy-middleware": "^0.19.3",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.2",
+    "jest": "^24.9.0",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "typescript": "~3.5.3"
+  },
+  "jest": {
+    "roots": [
+      "lib"
+    ],
+    "transform": {
+      "^.+\\.(ts|js)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json"
+      }
+    }
   }
 }
