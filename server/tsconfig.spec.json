@@ -6,7 +6,8 @@
     "types": [
       "jest"
     ],
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
     "**/*.spec.ts",
