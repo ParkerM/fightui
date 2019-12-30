@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
     "outDir": "../out-tsc/spec",
@@ -11,7 +11,7 @@
     ]
   },
   "files": [
-    "polyfills.ts"
+    "src/polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts",
